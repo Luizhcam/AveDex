@@ -8,7 +8,7 @@ def exibir_menu():
     print("            MENU PRINCIPAL")
     exibir_linha()
     print("1 - Ver mensagem de boas-vindas")
-    print("2 - Conhecer uma ave")
+    print("2 - Listar aves")
     print("3 - Ver uma curiosidade sobre aves")
     print("4 - Sobre a AveDex")
     print("0 - Sair")
@@ -20,10 +20,13 @@ def mostrar_boas_vindas(nome_usuario):
     print("Aqui vamos conhecer aves e praticar boas práticas.")
 
 
-def mostrar_ave_inicial():
-    print("Ave escolhida: Bem-te-vi")
-    print("Nome científico: Pitangus sulphuratus")
-    print("O bem-te-vi é uma das aves mais conhecidas do Brasil.")
+def listar_aves(catalogo):
+    print()
+    exibir_linha()
+    print("AVES CADASTRADAS")
+    exibir_linha()
+    for ave in catalogo:
+    print(f"{ave['codigo']} - {ave['nome_popular']}")
 
 
 def mostrar_curiosidade():
@@ -60,7 +63,7 @@ while opcao_menu != "0":
     if opcao_menu == "1":
         mostrar_boas_vindas(nome_usuario)
     elif opcao_menu == "2":
-        mostrar_ave_inicial()
+l       listar_aves(catalogo_aves)
     elif opcao_menu == "3":
         mostrar_curiosidade()
     elif opcao_menu == "4":
@@ -74,3 +77,4 @@ while opcao_menu != "0":
     # Se o usuário não escolheu sair, pede para pressionar ENTER antes de mostrar o menu de novo
     if opcao_menu != "0":
         pausar()
+        
