@@ -30,9 +30,10 @@ def listar_aves(catalogo):
         print(f"{ave['id']} - {ave['nome_popular']}")
 
 
-def buscar_ave_por_codigo(catalogo, codigo_procurado):
+# Função atualizada conforme a Etapa 2
+def buscar_ave_por_id(catalogo, id_procurado):
     for ave in catalogo:
-        if ave["id"] == codigo_procurado:
+        if str(ave["id"]) == id_procurado:
             return ave
     return None
 
@@ -59,7 +60,7 @@ def pausar():
     input("\nPressione ENTER para voltar ao menu...")
 
 
-# Catálogo com as chaves 'id' ajustadas conforme o exercício
+# Catálogo de aves
 catalogo_aves = [
     {
         "id": "1",
@@ -87,7 +88,11 @@ catalogo_aves = [
     },
 ]
 
-# Execução do Programa
+# --- TESTE DA ETAPA 2 (solicitado na imagem) ---
+ave_teste = buscar_ave_por_id(catalogo_aves, "1")
+print(ave_teste)
+
+# --- EXECUÇÃO PRINCIPAL ---
 print("=" * 50)
 print(" AVEDEX")
 print("=" * 50)
@@ -104,14 +109,12 @@ while opcao_menu != "0":
         listar_aves(catalogo_aves)
     elif opcao_menu == "2":
         listar_aves(catalogo_aves)
-        codigo_escolhido = input("\nDigite o ID da ave: ").strip()
-        ave_encontrada = buscar_ave_por_codigo(
-            catalogo_aves, codigo_escolhido
-        )
+        id_escolhido = input("\nDigite o ID da ave: ").strip()
+        ave_encontrada = buscar_ave_por_id(catalogo_aves, id_escolhido)
         if ave_encontrada is not None:
             exibir_detalhes(ave_encontrada)
         else:
-            print("Ave não encontrada. Confira o ID informado.")
+            print("Ave não encontrada.")
     elif opcao_menu == "3":
         mostrar_boas_vindas(nome_usuario)
     elif opcao_menu == "4":
