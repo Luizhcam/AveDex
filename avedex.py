@@ -18,6 +18,7 @@ def listar_aves(catalogo):
     print("=" * 50)
     print("AVES CADASTRADAS")
     print("=" * 50)
+
     for ave in catalogo:
         print(f"{ave['id']} - {ave['nome_popular']}")
 
@@ -51,6 +52,11 @@ def selecionar_ave_por_id(catalogo):
     else:
         exibir_detalhes_ave(ave_encontrada)
 
+def buscar_ave_por_id(catalogo, id_procurado):
+    for ave in catalogo:
+        if str(ave["id"]) == id_procurado:
+            return ave
+    return None
 
 catalogo_aves = [
     {
