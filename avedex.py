@@ -1,4 +1,3 @@
-
 def pausar():
     input("\nPressione ENTER para voltar ao menu...")
 
@@ -19,7 +18,6 @@ def listar_aves(catalogo):
     print("=" * 50)
     print("AVES CADASTRADAS")
     print("=" * 50)
-
     for ave in catalogo:
         print(f"{ave['id']} - {ave['nome_popular']}")
 
@@ -28,7 +26,6 @@ def buscar_ave_por_id(catalogo, id_procurado):
     for ave in catalogo:
         if str(ave["id"]) == id_procurado:
             return ave
-
     return None
 
 
@@ -47,7 +44,6 @@ def exibir_detalhes_ave(ave):
 
 def selecionar_ave_por_id(catalogo):
     listar_aves(catalogo)
-
     id_escolhido = input("\nDigite o ID da ave: ").strip()
     ave_encontrada = buscar_ave_por_id(catalogo, id_escolhido)
 
@@ -59,9 +55,19 @@ def selecionar_ave_por_id(catalogo):
 
 catalogo_aves = [
     {
+        # Identificador único da ave.
+        # Usamos o ID para escolher uma ave no menu.
         "id": 1,
+        # Nome mais conhecido da ave.
         "nome_popular": "Bem-te-vi",
+        # Nome científico da espécie.
         "nome_cientifico": "Pitangus sulphuratus",
+        # Classificação taxonômica.
+        "ordem": "Passeriformes",
+        "familia": "Tyrannidae",
+        # Tipo principal de dieta.
+        "dieta_tipo": "Onívora",
+        # Informações descritivas usadas nos detalhes.
         "habitat": "Áreas abertas, cidades e bordas de florestas",
         "alimentacao": "Insetos, frutos e pequenos animais",
         "curiosidade": "Seu canto parece dizer o próprio nome."
@@ -70,6 +76,9 @@ catalogo_aves = [
         "id": 2,
         "nome_popular": "João-de-barro",
         "nome_cientifico": "Furnarius rufus",
+        "ordem": "Passeriformes",
+        "familia": "Furnariidae",
+        "dieta_tipo": "Insetívora",
         "habitat": "Campos, cidades e áreas rurais",
         "alimentacao": "Insetos e outros invertebrados",
         "curiosidade": "É conhecido por construir ninhos de barro."
@@ -78,12 +87,14 @@ catalogo_aves = [
         "id": 3,
         "nome_popular": "Canário-da-terra",
         "nome_cientifico": "Sicalis flaveola",
+        "ordem": "Passeriformes",
+        "familia": "Thraupidae",
+        "dieta_tipo": "Granívora",
         "habitat": "Campos e áreas abertas",
         "alimentacao": "Sementes e pequenos insetos",
         "curiosidade": "Possui canto forte e melodioso."
     }
 ]
-
 
 opcao_menu = ""
 
@@ -99,9 +110,7 @@ while opcao_menu != "0":
 
     elif opcao_menu == "3":
         print("A AveDex é um catálogo interativo de aves.")
-        print(
-            "Aos poucos, vamos adicionar busca, comparação, documentação e testes."
-        )
+        print("Aos poucos, vamos adicionar busca, comparação, documentação e testes.")
 
     elif opcao_menu == "0":
         print("Encerrando a AveDex. Até logo!")
@@ -111,4 +120,3 @@ while opcao_menu != "0":
 
     if opcao_menu != "0":
         pausar()
-
