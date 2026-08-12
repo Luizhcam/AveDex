@@ -1,39 +1,72 @@
+
 import json
 from pathlib import Path
 
+from src.avedex.utils import mensagem_erro
 
 # __file__ representa o caminho deste arquivo dados.py.
+#
 # Como dados.py está em src/avedex/dados.py, usamos parents[2]
 # para chegar à raiz do projeto.
+
 CAMINHO_PROJETO = Path(__file__).resolve().parents[2]
 
+
 # Caminho do arquivo JSON usado pela AveDex.
-CAMINHO_DATASET = CAMINHO_PROJETO / "data" / "avedex_dataset_midias.json"
+
+CAMINHO_DATASET = (
+    CAMINHO_PROJETO
+    / "data"
+    / "avedex_dataset_midias.json"
+)
 
 
 def carregar_dataset(caminho=CAMINHO_DATASET):
-    # Abre o arquivo JSON em modo leitura.
-    # encoding="utf-8" evita problemas com acentos.
-    with open(caminho, "r", encoding="utf-8") as arquivo:
-        dataset = json.load(arquivo)
+    # Tenta abrir e ler o arquivo JSON.
+    try:
+        with open(caminho, "r", encoding="utf-8") as arquivo:
+            return json.load(arquivo)
 
-    return dataset
+    # Este erro acontece quando o arquivo não existe.
+    except FileNotFoundError:
+        mensagem_erro(
+            f"Arquivo de dataset não encontrado: {caminho}"
+        )
+        return {
+            "nome_dataset": "AveDex",
+            "aves": []
+        }
+
+    # Este erro acontece quando o JSON está mal formatado.
+    except json.JSONDecodeError:
+        mensagem_erro("Erro ao ler o JSON do dataset.")
+        mensagem_erro(
+            "Verifique vírgulas, aspas, chaves e colchetes."
+        )
+        return {
+            "nome_dataset": "AveDex",
+            "aves": []
+        }
 
 
 def carregar_aves():
     # Carrega o dataset completo.
+
     dataset = carregar_dataset()
 
     # Retorna apenas a lista de aves.
     # Se a chave "aves" não existir, retorna lista vazia.
+
     return dataset.get("aves", [])
 
 
 def obter_fontes_globais():
     # Carrega o dataset completo.
+
     dataset = carregar_dataset()
 
     # Retorna as fontes gerais cadastradas no JSON.
+
     return dataset.get("fontes_globais", {})
 
 
