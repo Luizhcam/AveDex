@@ -1,25 +1,25 @@
 # Testes manuais da AveDex
-## Execução
-- [ ] O projeto executa com `python main.py`.
-- [ ] O menu principal aparece corretamente.
-- [ ] A opção 0 encerra o programa.
-## Catálogo
-- [ ] A opção 1 lista as aves.
-- [ ] A opção 2 busca por parte do nome.
-- [ ] A opção 2 busca por família.
-- [ ] A opção 2 busca por ordem.
-- [ ] A opção 2 busca por dieta.
-- [ ] A opção 3 mostra detalhes por ID.
-- [ ] O programa trata ID inexistente.
-- [ ] O programa trata letras no lugar do ID.
-## Comparação
-- [ ] A opção 4 compara duas aves existentes.
-- [ ] A comparação mostra família, dieta, peso e comprimento.
-- [ ] A comparação trata ID inexistente.
-## Dados e ambiente
-- [ ] O JSON é carregado corretamente.
-- [ ] O programa identifica JSON ausente.
-- [ ] O programa identifica JSON mal formatado.
-- [ ] O programa identifica campo obrigatório ausente.
-- [ ] O programa identifica ID duplicado.
-- [ ] A opção 6 verifica o ambiente.
+## Funcionalidades principais
+- [ ] O programa abre com `python main.py`.
+- [ ] O dataset JSON é carregado e validado.
+- [ ] A listagem possui paginação e seleção por ID.
+- [ ] A busca ignora diferenças de maiúsculas e acentos.
+- [ ] Os detalhes mostram dados completos e mídias cadastradas.
+- [ ] A comparação mostra duas aves lado a lado.
+- [ ] A ave aleatória é sorteada e exibida.
+- [ ] A batalha permite escolher duas aves e um atributo.
+- [ ] A mesma ave não pode batalhar contra ela própria.
+## Imagem, som e cache
+- [ ] Ave sem `imagem_url` mostra aviso e não encerra o programa.
+- [ ] Ave sem `som_url` mostra aviso e não encerra o programa.
+- [ ] A primeira execução baixa a mídia disponível.
+- [ ] A segunda execução reaproveita o arquivo em `cache_midias/`.
+- [ ] Sem `term-image`, o caminho da imagem salva é informado.
+- [ ] Sem `pygame`, o caminho do som salvo é informado.
+- [ ] Falha de conexão mostra mensagem clara.
+## Interface e ambiente
+- [ ] O menu aparece em caixa visual.
+- [ ] Títulos, avisos, erros e sucessos estão padronizados.
+- [ ] A verificação do ambiente informa as dependências instaladas.
+- [ ] A opção de créditos continua disponível.
+- [ ] A opção `0` encerra corretamente.
